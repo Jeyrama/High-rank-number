@@ -19,3 +19,28 @@ function highestRank(arr) {
 }
 
 // or
+
+function highestRank(arr) {
+  const map = new Map()
+  
+  arr.forEach(value => {
+    if (map.has(value)) {
+      map.set(value, map.get(value) + 1)
+    } else {
+      map.set(value, 1)
+    }
+  })
+  
+  let most_frequent, result
+  
+  most_frequent = 0
+  
+  map.forEach((frequent, number) => {
+    if (most_frequent < frequent || most_frequent == frequent && result < number) {
+      result = number
+      most_frequent = frequent
+    }
+  })
+  
+  return result
+}
